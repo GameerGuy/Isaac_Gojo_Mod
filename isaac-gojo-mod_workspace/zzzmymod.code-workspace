@@ -1,0 +1,15 @@
+{
+  "folders": [
+	{
+		"path": "D:/SteamLibrary/steamapps/common/The Binding of Isaac Rebirth/mods/zzzmymod"
+	},
+	{
+		"path": "D:/SteamLibrary/steamapps/common/The Binding of Isaac Rebirth/mods/black hole_840640979"
+	}
+],
+  "settings": {
+    "files.associations": {
+      ".anm2": "xml"
+    }
+  }
+}
