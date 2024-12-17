@@ -1,0 +1,15 @@
+Limitless:
+-Small speed up.
+-Creates a forcefield around isaac that protects against enemies and projectiles.
+-Strength of forcefield is proportional to (current active charge/max active charge) * max active charge.
+-Strength determins forcefield effect radius and effect scaling.
+
+Convergence:
+
+
+Divergence:
+
+
+When both convergence and divergence are at full charge and used simultaneously:
+-Fire off hollow purple.
+-
