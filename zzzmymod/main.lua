@@ -23,22 +23,23 @@ end
 function mod:ForceField()
     local playerCount = game:GetNumPlayers()
     local entities = Isaac.GetRoomEntities()
+
     for playerIndex = 0, playerCount - 1 do
         local player = Isaac.GetPlayer(playerIndex)
+
         for i = 1, #entities do
             -- Only effect enemies and projectiles
             if not entities[i]:IsActiveEnemy() and entities[i].Type ~= EntityType.ENTITY_PROJECTILE then goto continue end
 
             local dist = entities[i].Position:Distance(player.Position)
-
             if dist > forceFieldRadius then goto continue end
 
             local forceAmount = 1
             if entities[i].Type == EntityType.ENTITY_PROJECTILE then
                 local forceFactor = ((dist - radiusOffset + (forceFieldRadius * 0)) / ((forceFieldRadius * 1) - radiusOffset))
-                local relativePos = player.Position:__sub(entities[i].Position)
-                local angleMult = relativePos:Dot(entities[i].Velocity) /
-                    (relativePos:Length() * entities[i].Velocity:Length())
+                local PosFromPlayer = player.Position:__sub(entities[i].Position)
+                local angleMult = PosFromPlayer:Dot(entities[i].Velocity) / PosFromPlayer:Length() * entities[i].Velocity:Length()
+
                 if angleMult > 0 then
                     forceAmount = (1 / forceFactor * angleMult)
                 else
@@ -47,6 +48,7 @@ function mod:ForceField()
 
                 entities[i].Velocity = entities[i].Velocity:__div(forceAmount)
             else
+
                 forceAmount = 1 / ((dist - radiusOffset) / (forceFieldRadius - radiusOffset))
                 entities[i].Velocity = entities[i].Velocity:__div(forceAmount)
             end
